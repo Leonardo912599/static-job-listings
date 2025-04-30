@@ -22,7 +22,7 @@ const CardJob = ({ jobPosting }: Props) => {
             />
 
             <div className='flex flex-col sm:flex-row justify-between w-full items-center'>
-                <div className='flex flex-col justify-center items-start gap-2 w-full sm:w-auto'>
+                <div className='flex flex-col justify-center border-b-2 sm:border-b-0 border-b-gray-300 pb-4 items-start gap-2 w-full sm:w-auto'>
                     <div className='flex flex-row justify-center items-center gap-2'>
                         <p className='font-bold' style={{ color: 'hsl(180, 29%, 50%)' }}>{jobPosting.company}</p>
                         {(jobPosting.new || jobPosting.featured) && (
@@ -39,13 +39,18 @@ const CardJob = ({ jobPosting }: Props) => {
                     <p className='font-bold'>{jobPosting.position}</p>
                     <div className='flex flex-row gap-2 text-gray-400 text-sm'>
                         <p>{jobPosting.postedAt}</p>
-                        <p>• {jobPosting.contract}</p>
-                        <p>• {jobPosting.location}</p>
+                        <div className='flex flex-row justify-center items-center gap-2'>
+                            <p>•</p>
+                        <p>{jobPosting.contract}</p>
+                        </div>
+                        <div className='flex flex-row justify-center items-center gap-2'>
+                            <p>•</p>
+                            <p>{jobPosting.location}</p>
+                        </div>
                     </div>
                 </div>
 
-
-                <div className='flex flex-wrap justify-start sm:justify-center gap-2 mt-4 sm:mt-0'>
+                <div className='flex flex-wrap justify-start sm:justify-center gap-4 sm:gap-2 mt-4 sm:mt-0'>
                     {[...jobPosting.languages, ...jobPosting.tools, jobPosting.role, jobPosting.level].map((item, index) => (
                         <p
                             key={index}
@@ -62,7 +67,6 @@ const CardJob = ({ jobPosting }: Props) => {
                 </div>
             </div>
         </div>
-
     )
 }
 
